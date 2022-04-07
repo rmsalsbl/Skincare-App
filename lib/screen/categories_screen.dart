@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app_10_grade/model/category.dart';
 import 'package:food_app_10_grade/widget/category_item.dart';

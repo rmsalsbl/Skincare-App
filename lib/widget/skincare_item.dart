@@ -1,38 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:food_app_10_grade/model/meal.dart';
-import 'package:food_app_10_grade/screen/detail_meals_screen.dart';
+import 'package:food_app_10_grade/model/skincare.dart';
+import 'package:food_app_10_grade/screen/detail_skincare_screen.dart';
 
-class MealItem extends StatelessWidget {
+class SkincareItem extends StatelessWidget {
   final String id;
   final String title;
   final String imgUrl;
-  final int duration;
-  final Complexity complexity;
+  final String type;
   final Affordability affordability;
 
-  MealItem(
+  SkincareItem(
       {required this.id,
       required this.title,
       required this.imgUrl,
-      required this.duration,
-      required this.complexity,
+      required this.type,
       required this.affordability});
 
   //membuat func untuk complexity
 
-  String get complexityText {
-    switch (complexity) {
-      case Complexity.Mudah:
-        return 'Mudah';
-      case Complexity.Sedang:
-        return 'Sedang';
-      case Complexity.Sulit:
-        return 'Sulit';
-      default:
-        return 'Unknown';
-    }
-  }
 
   //membuat func untuk affordability
   String get affordabilityText {
@@ -52,20 +37,20 @@ class MealItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, DetailMealScreen.routesName, arguments: id);
+        Navigator.pushNamed(context, DetailSkincareScreen.routesName, arguments: id);
       },
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15)
         ),
         elevation: 4,
-        margin: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
         child: Column(
           children: [
             Stack(
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15)
                   ),
@@ -81,13 +66,13 @@ class MealItem extends StatelessWidget {
                     child: Container(
                       width: 300,
                       color: Colors.black54,
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         vertical: 5,
                         horizontal: 20,
                       ),
                       child: Text(
                         title,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 26,
                           color: Colors.white,
                         ),
@@ -99,28 +84,22 @@ class MealItem extends StatelessWidget {
               ],
             ),
             Padding(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.schedule),
-                      SizedBox(width: 6,),
-                      Text('$duration min')
+                      const Icon(Icons.face_retouching_natural),
+                      const SizedBox(width: 6,),
+                      Text(type)
                     ],
                   ),
+
                   Row(
                     children: [
-                      Icon(Icons.work),
-                      SizedBox(width: 6,),
-                      Text(complexityText)
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(Icons.attach_money),
-                      SizedBox(width: 6,),
+                      const Icon(Icons.attach_money),
+                      const SizedBox(width: 6,),
                       Text(affordabilityText)
                     ],
                   ),

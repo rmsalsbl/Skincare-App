@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_app_10_grade/model/meal.dart';
+import 'package:food_app_10_grade/model/skincare.dart';
 
-class DetailMealScreen extends StatelessWidget {
+class DetailSkincareScreen extends StatelessWidget {
   //buat var untuk inisialisasi routesnya
   static const routesName = '/meal-detail';
 
@@ -11,17 +11,17 @@ class DetailMealScreen extends StatelessWidget {
   final Function toggleFavorite ;
   final Function isFavorite;
 
-  DetailMealScreen(this.toggleFavorite, this.isFavorite);
+    DetailSkincareScreen(this.toggleFavorite, this.isFavorite);
 
   @override
   Widget build(BuildContext context) {
     //buat var untuk menamping argumen
     final mealId = ModalRoute.of(context)!.settings.arguments as String;
     //buat var unutk menentukan ide yang di select atau yang dipilih
-    final selectedMeal = meals.firstWhere((meal) => meal.id == mealId);
+    final selectedMeal = cares.firstWhere((meal) => meal.id == mealId);
     return Scaffold(
       appBar: AppBar(
-        title: Text('${selectedMeal.title}'),
+        title: Text(selectedMeal.title),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -31,24 +31,24 @@ class DetailMealScreen extends StatelessWidget {
               width: double.infinity,
               child: Image.network(selectedMeal.imgurl, fit: BoxFit.cover,),
             ),
-            buildSectionTitle(context, "Ingerdients"),
+            buildSectionTitle(context, "Variant"),
             bulidContainer(context,
             ListView.builder(
                 itemBuilder: (context, index) {
                   return Card(
-                    color: Theme.of(context).accentColor,
+                    color: Color(0xffFEE3F0),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         vertical: 5, horizontal: 10
                       ),
-                      child: Text(selectedMeal.ingredients[index]),
+                      child: Text(selectedMeal.variant[index]),
                     ),
                   );
                 },
-              itemCount: selectedMeal.ingredients.length,
+              itemCount: selectedMeal.variant.length,
             )
             ),
-            buildSectionTitle(context, "Steps"),
+            buildSectionTitle(context, "Benefit"),
             bulidContainer(context,
                 ListView.builder(
                   itemBuilder: (context, index) {
@@ -56,14 +56,15 @@ class DetailMealScreen extends StatelessWidget {
                       children: [
                         ListTile(
                           leading: CircleAvatar(
-                            child: Text('# ${(index + 1)}'),
+                            backgroundColor : Color(0xffFEE3F0),
+                            child: Text('# ${(index + 1)}',style: TextStyle(color: Colors.pink), ),
                           ),
-                          title: Text(selectedMeal.steps[index]),
+                          title: Text(selectedMeal.benefit[index]),
                         )
                       ],
                     );
                   },
-                  itemCount: selectedMeal.steps.length,
+                  itemCount: selectedMeal.benefit.length,
                 )
             )
           ],
@@ -72,7 +73,7 @@ class DetailMealScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () => toggleFavorite(mealId),
         child: Icon(
-          isFavorite(mealId) ? Icons.favorite : Icons.favorite_border_outlined, color: Colors.brown,
+          isFavorite(mealId) ? Icons.favorite : Icons.favorite_border_outlined, color: Colors.pink,
         ),
       ),
     );
@@ -80,8 +81,8 @@ class DetailMealScreen extends StatelessWidget {
 
   Widget buildSectionTitle(BuildContext context, String text){
     return Container(
-      margin: EdgeInsets.all(10),
-      child: Text("Ingredients", style: Theme.of(context).textTheme.headline6,),
+      margin: const EdgeInsets.all(10),
+      child: Text(text, style: Theme.of(context).textTheme.headline6,),
     );
   }
   Widget bulidContainer(BuildContext context, Widget child){
@@ -91,8 +92,8 @@ class DetailMealScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: Colors.grey)
       ),
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       height: 200,
       width: MediaQuery.of(context).size.width,
       child: child,

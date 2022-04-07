@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_app_10_grade/model/meal.dart';
-import 'package:food_app_10_grade/screen/categories_meal_screen.dart';
-import 'package:food_app_10_grade/screen/detail_meals_screen.dart';
+import 'package:food_app_10_grade/model/skincare.dart';
+import 'package:food_app_10_grade/screen/categories_skincare_screen.dart';
+import 'package:food_app_10_grade/screen/detail_skincare_screen.dart';
 import 'package:food_app_10_grade/screen/homeScreen.dart';
 
 void main() {
@@ -18,7 +18,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   //membuat data unutk list datat favoritenya yang berupa list kosong
-  List<Meal> _favoriteMeals = [];
+  List<Skincare> _favoriteMeals = [];
 
   void _toggleFavorite(String mealId){
     final existingIndex =
@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
       });
     } else{
       setState(() {
-        _favoriteMeals.add(meals.firstWhere((meal) => meal.id == mealId));
+        _favoriteMeals.add(cares.firstWhere((meal) => meal.id == mealId));
       });
     }
   }
@@ -47,12 +47,12 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch(
-            primarySwatch: Colors.brown,
+            primarySwatch: Colors.pink,
           ).copyWith(
-            secondary: Colors.amber,
+            secondary: Colors.purpleAccent,
           ),
-          canvasColor: Color.fromRGBO(225, 254, 229, 1),
-          fontFamily: 'RobotoCondensed',
+          canvasColor: Color.fromRGBO(229, 225, 230, 1),
+          fontFamily: 'Beardies DEMO',
           textTheme: ThemeData.light().textTheme.copyWith(
               bodyText1: TextStyle(
                 color: Color.fromRGBO(20, 51, 51, 1),
@@ -66,8 +66,8 @@ class _MyAppState extends State<MyApp> {
       initialRoute: '/',
       routes: {
         '/': (context) => HomeScreen(_favoriteMeals),
-        CategoriesMealScreen.routeName: (context) => CategoriesMealScreen(),
-        DetailMealScreen.routesName: (context) => DetailMealScreen(_toggleFavorite, _isMealFavorite),
+        CategoriesSkincareScreen.routeName: (context) => CategoriesSkincareScreen(),
+        DetailSkincareScreen.routesName: (context) => DetailSkincareScreen(_toggleFavorite, _isMealFavorite),
       },
     );
   }

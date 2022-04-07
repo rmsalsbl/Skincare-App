@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:food_app_10_grade/screen/categories_meal_screen.dart';
+import 'package:food_app_10_grade/screen/categories_skincare_screen.dart';
 
 class CategoryItem extends StatelessWidget {
   final String id;
@@ -14,13 +14,13 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, CategoriesMealScreen.routeName, arguments: {
+        Navigator.pushNamed(context, CategoriesSkincareScreen.routeName, arguments: {
           'id' : id,
           'title' : title
         });
       },
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Text(
             title,
         style: Theme.of(context).textTheme.headline6

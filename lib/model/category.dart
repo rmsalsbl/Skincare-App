@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Category{
@@ -16,44 +15,44 @@ class Category{
 
 var categories = [
   Category(
-      id: 'c1',
-      title: 'Cheese',
-    color: Color(0xffBFCBA8)
+      id: 'tbs',
+      title: 'The Body Shop',
+    color: const Color(0xffB66878)
   ),
   Category(
-      id: 'c2',
-      title: 'peanut',
-      color: Color(0xffA0937D)
+      id: 'sbm',
+      title: 'Some by me',
+      color: const Color(0xffC98895)
   ),
   Category(
-      id: 'c3',
-      title: 'chocolate',
-      color: Color(0xffB4846C)
+      id: 'np',
+      title: 'Npure',
+      color: const Color(0xffD49BA7)
   ),
   Category(
-      id: 'c4',
-      title: 'Salmon',
-      color: Color(0xffDE8971)
+      id: 'wd',
+      title: 'Wardah',
+      color: const Color(0xffE0A2A2)
   ),
   Category(
-      id: 'c5',
-      title: 'chicken',
-      color: Color(0xff92817A)
+      id: 'em',
+      title: 'Emina',
+      color: const Color(0xffC38888)
   ),
   Category(
-      id: 'c6',
-      title: 'Beef',
-      color: Color(0xff8E806A)
+      id: 'nr',
+      title: 'Nature Republic',
+      color: const Color(0xffF3B6B6)
   ),
   Category(
-      id: 'c7',
-      title: 'Pasta',
-      color: Color(0xffFFE6BC)
+      id: 'if',
+      title: 'Innisfree',
+      color: const Color(0xffE5969C)
   ),
   Category(
-      id: 'c8',
-      title: 'Tofu',
-      color: Color(0xffFFF1AF)
+      id: 'sl',
+      title: 'Scarlett',
+      color: const Color(0xffF5C9C6)
   ),
 
 

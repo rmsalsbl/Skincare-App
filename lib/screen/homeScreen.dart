@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:food_app_10_grade/model/meal.dart';
+import 'package:food_app_10_grade/model/skincare.dart';
 import 'package:food_app_10_grade/screen/categories_screen.dart';
 import 'package:food_app_10_grade/screen/favorite_screen.dart';
 
 class HomeScreen extends StatefulWidget {
 
   //buatlah sebuah var untuk memasukan parameter dari fav ke home ini
-  final List<Meal> favoriteMeals;
+  final List<Skincare> favoriteMeals;
   HomeScreen(this.favoriteMeals);
 
   @override
@@ -21,8 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     _pages = [
       {
-        'pages' : CategoriesScreen(),
-        'title' : 'Categories Screen'
+        'pages' : const CategoriesScreen(),
+        'title' : 'Find your Skin'
       },
       {
         'pages' : FavoriteScreen(widget.favoriteMeals),
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
           currentIndex: _selectedIndexPage,
           items: const [
             BottomNavigationBarItem(
-                icon: Icon(Icons.category),
+                icon: Icon(Icons.category_rounded),
               label: 'category'
             ),
             BottomNavigationBarItem(
